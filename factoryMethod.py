@@ -50,59 +50,60 @@
 #     i.info()
     
 class Student:
-    institue = 'Vcube'
-    std_fees = []
+    std_fee = []
+    institute = 'vcube'
     def __init__(self,n,a,g,m1,m2,f):
         self.name = n
         self.age = a
         self.gender = g
         self.m1 = m1
         self.m2 = m2
-        self.std_fees.append(f)
+        self.std_fee.append(f)
         
     def info(self):
-        print(self.name,self.age,self.gender,self.institue)
-        
+        print(self.name,self.age,self.gender,self.institute)
+       
     def average(self):
         return (self.m1+self.m2)//2
     
     def grade(self):
         avg = self.average()
-        if avg > 80:
+        if avg>80:
             grade = 'A'
-        elif avg > 60:
+        elif avg>50:
             grade = 'B'
-        elif avg > 50:
+        else :
             grade = 'C'
             
         return grade
-    
     @classmethod
     def totalrevenue(cls):
-        return sum(cls.std_fees)
-    
+        return sum(cls.std_fee)
     
     @classmethod
-    def generateStds(cls,st):
+    def generateobj(cls,st):
         n,a,g,m1,m2,f = st.split(',')
         obj = cls(n,int(a),g,int(m1),int(m2),int(f))
         return obj
     
     
+st_obj = ['rajesh,25,male,55,98,30000',
+          'rani,28,female,45,90,35000',
+          'ashock,29,male,65,80,40000',
+          'srija,26,female,85,68,30000',
+          'sruthi,35,female,90,88,35000',
+          ]
     
-sobj = ['raju,45,male,50,60,40000',
-        'rani,35,female,90,80,45000',
-        'siva,25,male,90,95,30000',
-        'rahul,45,male,80,69,45000',
-        ]
-
-arr = []
-for s in sobj:
-    obj = Student.generateStds(s)
+arr = []   
+for s in st_obj:
+    obj = Student.generateobj(s)
     arr.append(obj)
     
 for i in arr:
     i.info()
+    res = i.grade()
+    print(res)
+    
         
         
     
